@@ -865,8 +865,8 @@
             border-color: var(--dark) transparent transparent transparent;
         }
 
-        /* Show the tooltip when the map-pin is active */
-        .map-pin.active .tooltip {
+        /* Show the tooltip when the map-pin is hovered */
+        .map-pin:hover .tooltip {
             visibility: visible;
             opacity: 1;
             transform: translateX(-50%) translateY(0);
@@ -916,12 +916,12 @@
                     <div class="map-graphic"></div>
 
                     <!-- Clean static map with pre-rendered apple indicators -->
-                    <div class="map-pin pin-punjab"><div class="tooltip">Punjab</div></div>
-                    <div class="map-pin pin-ambala"><div class="tooltip">Ambala</div></div>
-                    <div class="map-pin pin-saharanpur"><div class="tooltip">Saharanpur (UP)</div></div>
-                    <div class="map-pin pin-delhi"><div class="tooltip">Delhi</div></div>
-                    <div class="map-pin pin-kanpur"><div class="tooltip">Kanpur</div></div>
-                    <div class="map-pin pin-pune"><div class="tooltip">Pune</div></div>
+                    <a href="contact.html" class="map-pin pin-punjab"><div class="tooltip">Punjab</div></a>
+                    <a href="contact.html" class="map-pin pin-ambala"><div class="tooltip">Ambala</div></a>
+                    <a href="contact.html" class="map-pin pin-saharanpur"><div class="tooltip">Saharanpur (UP)</div></a>
+                    <a href="contact.html" class="map-pin pin-delhi"><div class="tooltip">Delhi</div></a>
+                    <a href="contact.html" class="map-pin pin-kanpur"><div class="tooltip">Kanpur</div></a>
+                    <a href="contact.html" class="map-pin pin-pune"><div class="tooltip">Pune</div></a>
                 </div>
             </div>
         </div>
@@ -936,30 +936,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const pins = document.querySelectorAll('.map-pin');
-            
-            pins.forEach(pin => {
-                // Support both touch and click events natively
-                const handleInteraction = (e) => {
-                    e.stopPropagation();
-                    const isActive = pin.classList.contains('active');
-                    
-                    // Close all active tooltips
-                    pins.forEach(p => p.classList.remove('active'));
-                    
-                    // Toggle target pin tooltip
-                    if (!isActive) {
-                        pin.classList.add('active');
-                    }
-                };
-                
-                pin.addEventListener('click', handleInteraction);
-            });
-            
-            // Close active tooltips when clicking anywhere else on the document
-            document.addEventListener('click', () => {
-                pins.forEach(p => p.classList.remove('active'));
-            });
+            // Interactive tooltips are handled natively via CSS hover states on hyperlinks
         });
     </script>
 </body>
