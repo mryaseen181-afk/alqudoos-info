@@ -642,40 +642,6 @@
             transform: translate(-50%, -50%);
         }
 
-        .map-pin svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 2px 4px rgba(45, 26, 24, 0.25));
-            transition: var(--transition);
-            animation: apple-bounce 2s infinite ease-in-out;
-        }
-
-        .map-pin:hover svg {
-            transform: scale(1.25);
-            filter: drop-shadow(0 6px 12px rgba(214, 48, 49, 0.45));
-        }
-
-        @keyframes apple-bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-6px);
-            }
-        }
-        
-        /* Map locations placement on India outline image */
-        .pin-punjab { top: 22%; left: 32%; }
-        .pin-ambala { top: 25%; left: 36%; }
-        .pin-saharanpur { top: 26%; left: 39%; }
-        .pin-delhi { top: 31%; left: 38%; }
-        .pin-kanpur { top: 39%; left: 49%; }
-        .pin-pune { top: 66%; left: 27%; }
-
-        
-
-        .map-pin:hover 
-
         .map-legend {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
