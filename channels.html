@@ -627,6 +627,7 @@
             background: url('india_map_outline.png') no-repeat center center;
             background-size: contain;
             position: relative;
+            filter: brightness(0) invert(1);
         }
         
         .map-pin {
@@ -668,27 +669,9 @@
         .pin-kanpur { top: 41%; left: 52%; }
         .pin-pune { top: 66%; left: 32%; }
 
-        .pin-label {
-            position: absolute;
-            left: 36px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(45, 26, 24, 0.9);
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 700;
-            white-space: nowrap;
-            box-shadow: var(--shadow-sm);
-            pointer-events: none;
-            transition: var(--transition);
-        }
+        
 
-        .map-pin:hover .pin-label {
-            background: var(--primary);
-            transform: translateY(-50%) scale(1.05);
-        }
+        .map-pin:hover 
 
         .map-legend {
             display: grid;
@@ -849,7 +832,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Punjab</span>
+                        
                     </div>
                     <div class="map-pin pin-ambala">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -857,7 +840,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Ambala</span>
+                        
                     </div>
                     <div class="map-pin pin-saharanpur">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -865,7 +848,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Saharanpur (UP)</span>
+                        
                     </div>
                     <div class="map-pin pin-delhi">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -873,7 +856,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Delhi</span>
+                        
                     </div>
                     <div class="map-pin pin-kanpur">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -881,7 +864,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Kanpur</span>
+                        
                     </div>
                     <div class="map-pin pin-pune">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -889,7 +872,7 @@
                             <path d="M12 6c0-2 1.5-3.5 3-3.5.3 0 .5.1.5.3 0 1.5-1.5 3-3 3.2z" fill="#2ecc71"/>
                             <path d="M12 6c-0.3-1.2-0.8-2.2-1.5-2.8-.2-.2-.2-.5 0-.7.2-.2.5-.2.7 0 .8.7 1.3 1.8 1.6 3 .1.3-.1.6-.4.6h-.4z" fill="#8d6e63"/>
                         </svg>
-                        <span class="pin-label">Pune</span>
+                        
                     </div>
                 </div>
 
