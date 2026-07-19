@@ -47,7 +47,7 @@
         }
 
         .container {
-            width: 92%;
+            width: 90%;
             max-width: 1200px;
             margin: auto;
         }
@@ -597,7 +597,7 @@
             margin-top: 20px;
             background: var(--bg-surface);
             border-radius: var(--radius-lg);
-            padding: 40px;
+            padding: 40px 20px;
             box-shadow: var(--shadow-md);
             border: 1px solid rgba(45, 26, 24, 0.05);
         }
@@ -615,64 +615,57 @@
             width: 100%;
             max-width: 680px;
             margin: 0 auto;
-            background: #faf7ed;
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(45, 26, 24, 0.04);
-            overflow: hidden;
+            background: transparent;
+            overflow: visible;
             aspect-ratio: 1/1;
         }
 
         .map-graphic {
             width: 100%;
             height: 100%;
-            background: url('india_map_outline.jpg') no-repeat center center;
+            background: url('india_map_outline.png') no-repeat center center;
             background-size: contain;
             position: relative;
         }
         
         .map-pin {
             position: absolute;
-            width: 18px;
-            height: 18px;
-            background: var(--primary);
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
             cursor: pointer;
-            box-shadow: 0 0 0 0 rgba(214, 48, 49, 0.4);
-            animation: pulse 2s infinite;
             transition: var(--transition);
-        }
-
-        .map-pin::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            background: #fff;
-            border-radius: 50%;
             transform: translate(-50%, -50%);
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(214, 48, 49, 0.7);
+        .map-pin svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 2px 4px rgba(45, 26, 24, 0.25));
+            transition: var(--transition);
+            animation: apple-bounce 2s infinite ease-in-out;
+        }
+
+        .map-pin:hover svg {
+            transform: scale(1.25);
+            filter: drop-shadow(0 6px 12px rgba(214, 48, 49, 0.45));
+        }
+
+        @keyframes apple-bounce {
+            0%, 100% {
+                transform: translateY(0);
             }
-            70% {
-                box-shadow: 0 0 0 10px rgba(214, 48, 49, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(214, 48, 49, 0);
+            50% {
+                transform: translateY(-6px);
             }
         }
         
         /* Map locations placement on India outline image */
-        .pin-punjab { top: 22%; left: 35%; }
-        .pin-ambala { top: 25%; left: 40%; }
-        .pin-saharanpur { top: 28%; left: 45%; }
-        .pin-delhi { top: 32%; left: 43%; }
-        .pin-kanpur { top: 40%; left: 54%; }
-        .pin-pune { top: 69%; left: 34%; }
+        .pin-punjab { top: 24%; left: 35%; }
+        .pin-ambala { top: 26%; left: 39%; }
+        .pin-saharanpur { top: 27%; left: 42%; }
+        .pin-delhi { top: 31%; left: 41%; }
+        .pin-kanpur { top: 41%; left: 52%; }
+        .pin-pune { top: 66%; left: 32%; }
 
         .map-pin .tooltip {
             visibility: hidden;
@@ -756,6 +749,76 @@
             color: #fff;
         }
 
+        /* Mobile First Responsive Styles */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 14px;
+                padding: 14px 0;
+                align-items: center;
+            }
+            nav {
+                width: 100%;
+            }
+            nav ul {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                overflow-x: auto;
+                width: 100%;
+                padding-bottom: 6px;
+                -webkit-overflow-scrolling: touch;
+            }
+            nav ul li a {
+                font-size: 13px;
+                white-space: nowrap;
+                padding: 4px 6px;
+            }
+            #hero {
+                padding: 120px 0 80px 0;
+            }
+            #hero h2 {
+                font-size: 36px;
+            }
+            #hero p {
+                font-size: 16px;
+                margin-bottom: 28px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .feature-card {
+                padding: 30px 20px;
+            }
+            .fruits-showcase {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .category-details {
+                padding: 24px;
+            }
+            .partner-map-container {
+                padding: 20px 10px;
+            }
+            .map-wrapper {
+                max-width: 100%;
+            }
+            form {
+                padding: 24px 16px;
+            }
+            footer .container {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
         @media (max-width: 576px) {
             footer .container { flex-direction: column; gap: 16px; text-align: center; }
         }
