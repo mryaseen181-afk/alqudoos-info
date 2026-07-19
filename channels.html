@@ -823,54 +823,53 @@
 
         .map-pin {
             position: absolute;
-            width: 24px;
-            height: 24px;
+            width: 38px;
+            height: 38px;
             cursor: pointer;
             transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 10;
+            border-radius: 50%;
+            background: transparent;
         }
 
-        .pulse-ring {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            border: 2.5px solid var(--primary);
-            border-radius: 50%;
+        .map-pin .tooltip {
+            visibility: hidden;
             opacity: 0;
-            animation: pulse-expand 2s infinite cubic-bezier(0.25, 0, 0, 1);
-            pointer-events: none;
-        }
-
-        .pulse-ring::after {
-            content: '';
+            width: auto;
+            white-space: nowrap;
+            background: var(--dark);
+            color: #fff;
+            text-align: center;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2.5px solid var(--primary);
-            border-radius: 50%;
-            top: -2.5px;
-            left: -2.5px;
-            animation: pulse-expand 2s infinite cubic-bezier(0.25, 0, 0, 1);
-            animation-delay: 1s;
+            z-index: 20;
+            bottom: 115%;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: var(--shadow-lg);
+            pointer-events: none;
+            font-size: 13px;
+            font-weight: 700;
         }
 
-        @keyframes pulse-expand {
-            0% {
-                transform: scale(0.7);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1.9);
-                opacity: 0;
-            }
+        .map-pin .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark) transparent transparent transparent;
         }
 
-        .map-pin:hover .pulse-ring,
-        .map-pin:hover .pulse-ring::after {
-            border-color: #558b2f;
-            animation-duration: 1.2s;
+        /* Show the tooltip when the map-pin is active */
+        .map-pin.active .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
         
         .pin-punjab { top: 25.5%; left: 30.5%; }
@@ -917,12 +916,12 @@
                     <div class="map-graphic"></div>
 
                     <!-- Clean static map with pre-rendered apple indicators -->
-                    <div class="map-pin pin-punjab"><div class="pulse-ring"></div></div>
-                    <div class="map-pin pin-ambala"><div class="pulse-ring"></div></div>
-                    <div class="map-pin pin-saharanpur"><div class="pulse-ring"></div></div>
-                    <div class="map-pin pin-delhi"><div class="pulse-ring"></div></div>
-                    <div class="map-pin pin-kanpur"><div class="pulse-ring"></div></div>
-                    <div class="map-pin pin-pune"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-punjab"><div class="tooltip">Punjab</div></div>
+                    <div class="map-pin pin-ambala"><div class="tooltip">Ambala</div></div>
+                    <div class="map-pin pin-saharanpur"><div class="tooltip">Saharanpur (UP)</div></div>
+                    <div class="map-pin pin-delhi"><div class="tooltip">Delhi</div></div>
+                    <div class="map-pin pin-kanpur"><div class="tooltip">Kanpur</div></div>
+                    <div class="map-pin pin-pune"><div class="tooltip">Pune</div></div>
                 </div>
             </div>
         </div>
@@ -937,7 +936,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Interactive tooltips are handled natively via CSS hover states
+            const pins = document.querySelectorAll('.map-pin');
+            
+            pins.forEach(pin => {
+                // Support both touch and click events natively
+                const handleInteraction = (e) => {
+                    e.stopPropagation();
+                    const isActive = pin.classList.contains('active');
+                    
+                    // Close all active tooltips
+                    pins.forEach(p => p.classList.remove('active'));
+                    
+                    // Toggle target pin tooltip
+                    if (!isActive) {
+                        pin.classList.add('active');
+                    }
+                };
+                
+                pin.addEventListener('click', handleInteraction);
+            });
+            
+            // Close active tooltips when clicking anywhere else on the document
+            document.addEventListener('click', () => {
+                pins.forEach(p => p.classList.remove('active'));
+            });
         });
     </script>
 </body>
