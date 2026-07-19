@@ -145,6 +145,14 @@
             width: 100%;
         }
 
+        nav ul li a.active {
+            color: var(--primary);
+        }
+
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
         /* Hero Section */
         #hero {
             padding: 180px 0 140px 0;
@@ -366,6 +374,89 @@
             border: 1px solid rgba(124, 179, 66, 0.15);
         }
 
+        /* Fruits Showcase Grid styles */
+        .fruits-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 992px) {
+            .fruits-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+        .fruit-category-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(45, 26, 24, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .fruit-category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        .category-image {
+            height: 260px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .fruit-category-card:hover .category-image img {
+            transform: scale(1.05);
+        }
+        .category-details {
+            padding: 36px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .category-details h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 16px 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+        .category-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .fruit-types {
+            margin-top: auto;
+            border-top: 1px solid rgba(45, 26, 24, 0.08);
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .type-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            gap: 16px;
+        }
+        .type-item strong {
+            color: var(--dark);
+            font-weight: 700;
+        }
+        .type-item span {
+            color: var(--text-muted);
+            text-align: right;
+        }
+
         /* Contact Section */
         .contact-split {
             display: grid;
@@ -521,10 +612,6 @@
 
         @media (max-width: 576px) {
             footer .container { flex-direction: column; gap: 16px; text-align: center; }
-            nav { display: none; } 
-            form { padding: 24px; }
-            #hero h2 { font-size: 32px; }
-            .logo-image-wrapper { height: 44px; }
         }
     </style>
 </head>
@@ -532,9 +619,9 @@
 
     <header>
         <div class="container">
-            <a href="#hero" class="brand-logo">
+            <a href="index.html" class="brand-logo">
                 <div class="logo-image-wrapper">
-                    <img src="logo.jpg" alt="Al-Qudoos Fruits Logo">
+                    <img src="logo.png" alt="Al-Qudoos Fruits Logo">
                 </div>
                 <div class="brand-text">
                     <h1>Al-Qudoos <span>Fruits</span></h1>
@@ -542,10 +629,10 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="#why-us">Overview</a></li>
-                    <li><a href="#products">Varieties</a></li>
-                    <li><a href="#contact">Channels</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="overview.html" class="">Overview</a></li>
+                    <li><a href="varieties.html" class="">Varieties</a></li>
+                    <li><a href="channels.html" class="">Channels</a></li>
                 </ul>
             </nav>
         </div>
@@ -557,120 +644,7 @@
                 <span class="hero-tag">Agricultural Excellence</span>
                 <h2>Nature’s Finest, <span>Delivered Fresh.</span></h2>
                 <p>Establishing standard benchmarks in wholesale orchard logistics. We route premium crop yields transparently through direct channels to commercial markets worldwide.</p>
-                <a href="#products" class="btn">Explore Core Varieties</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Cultivating <span>Trust</span></h2>
-                <p class="section-subtitle">How Al-Qudoos ensures a flawless supply chain layout.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Handpicked Quality</h3>
-                    <p>Every single batch undergoes meticulous product verification to assure unmatched shape consistency, skin texture, and internal Brix levels.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Cold-Chain Integrity</h3>
-                    <p>Advanced temperature-regulated storage facilities continuously protect necessary vitamins and crisp organic properties from harvest to delivery.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Ethical Sourcing</h3>
-                    <p>We work directly with sustainable family-owned orchards to maintain a supportive farm ecosystem and transparent pricing metrics.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Core <span>Varieties</span></h2>
-                <p class="section-subtitle">Our verified wholesale product matrix.</p>
-            </div>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Classification</th>
-                            <th>Premium Wholesale Varieties</th>
-                            <th>Seasonal Availability</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Pome Fruits</strong></td>
-                            <td>Crisp Harvest Apples, Premium Golden & Red Pears</td>
-                            <td><span class="badge">Autumn / Winter</span></td>
-                        </tr>
-                         <tr>
-                            <td><strong>Stone Fruits</strong></td>
-                            <td>Plump Peaches, Dark Velvet Plums, Sweet Mountain Cherries</td>
-                            <td><span class="badge summer">Summer Peak</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Direct <span>Channels</span></h2>
-                <p class="section-subtitle">Skip intermediary brokers and communicate directly with our lead managers.</p>
-            </div>
-            <div class="contact-split">
-                
-                <div class="contact-info">
-                    <h3>Connect immediately with our primary desk leads for real-time market pricing and volume logistics.</h3>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-card">
-                            <p>Procurement & Logistics Desk</p>
-                            <a href="tel:9796121181">Masood: +91 9796121181</a>
-                        </div>
-                        <div class="contact-card">
-                            <p>Sales & Field Operations</p>
-                            <a href="tel:9906808079">Inayat: +91 9906808079</a>
-                        </div>
-                    </div>
-
-                    <div class="meta-info">
-                        <p><strong>Corporate Communications:</strong> commercial@alqudoosfruits.com</p>
-                        <p><strong>Standard Operating Hours:</strong> Mon – Sat: 8:00 AM – 6:00 PM</p>
-                    </div>
-                </div>
-
-                <div>
-                    <form action="#" onsubmit="event.preventDefault(); alert('Specifications successfully transmitted.');">
-                        <div class="form-group">
-                            <label>Full Name / Company Entity</label>
-                            <input type="text" placeholder="Your name or business company" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Business Email Address</label>
-                            <input type="email" placeholder="name@company.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Inquiry Intent</label>
-                            <select required>
-                                <option value="">Select Option</option>
-                                <option value="bulk">Wholesale Distribution</option>
-                                <option value="partner">Orchard Partnership</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Distribution Requirements</label>
-                            <textarea rows="4" placeholder="Detail fruit varieties, anticipated metrics, and destination coordinates..." required></textarea>
-                        </div>
-                        <button type="submit">Submit Specifications</button>
-                    </form>
-                </div>
-
+                <a href="varieties.html" class="btn">Explore Core Varieties</a>
             </div>
         </div>
     </section>
@@ -681,6 +655,5 @@
             <p style="font-weight: 700; color: var(--primary);">Purity & Integrity in Every Framework.</p>
         </div>
     </footer>
-
 </body>
 </html>
