@@ -12,20 +12,20 @@
         :root {
             --primary: #d63031;       /* Crisp Apple Red */
             --primary-hover: #b32424;
-            --primary-glow: rgba(214, 48, 49, 0.12);
+            --primary-glow: rgba(214, 48, 49, 0.08);
             --logo-red: #d63031;      /* Logo Red */
             --dark: #2d1a18;          /* Apple Seed/Stem Charcoal */
             --text-main: #3e2723;     /* Deep Warm Apple Bark */
             --text-muted: #8d6e63;    /* Warm Muted Brown */
             --bg-surface: #ffffff;
             --bg-global: #fbf9f1;     /* Creamy Apple Flesh */
-            --radius-lg: 24px;
-            --radius-md: 16px;
-            --radius-sm: 12px;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
-            --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 2px 8px rgba(45, 26, 24, 0.04);
+            --shadow-md: 0 10px 30px rgba(45, 26, 24, 0.06);
+            --shadow-lg: 0 20px 50px rgba(45, 26, 24, 0.1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -54,13 +54,13 @@
 
         /* Floating Premium Header */
         header {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(251, 249, 241, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+            border-bottom: 1px solid rgba(45, 26, 24, 0.06);
             transition: var(--transition);
         }
 
@@ -68,7 +68,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
         }
 
         .brand-logo {
@@ -129,17 +129,16 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
+            left: 0;
             width: 0;
             height: 2.5px;
             background-color: var(--primary);
             transition: var(--transition);
-            transform: translateX(-50%);
             border-radius: 2px;
         }
 
         nav ul li a:hover {
-            color: var(--dark);
+            color: var(--primary);
         }
 
         nav ul li a:hover::after {
@@ -263,7 +262,7 @@
             padding: 40px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(45, 26, 24, 0.05);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -274,17 +273,17 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #ff7675);
             opacity: 0;
             transition: var(--transition);
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(214, 48, 49, 0.2);
+            border-color: rgba(214, 48, 49, 0.15);
         }
 
         .feature-card:hover::before {
@@ -302,16 +301,16 @@
         .feature-card p {
             color: var(--text-muted);
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         /* Table Layout */
         .table-container {
             background: var(--bg-surface);
             border-radius: var(--radius-lg);
-            padding: 16px;
+            padding: 20px;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(45, 26, 24, 0.05);
             overflow-x: auto;
         }
 
@@ -326,17 +325,17 @@
             font-weight: 700;
             color: var(--text-muted);
             padding: 20px 28px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 2px solid #f3ece4;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            background: #fafafa;
+            background: #fdfbf7;
             border-radius: var(--radius-sm);
         }
 
         td {
             padding: 24px 28px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f3ece4;
             font-size: 15px;
             color: var(--text-main);
         }
@@ -346,7 +345,7 @@
         }
 
         tr:hover td {
-            background-color: #f8fafc;
+            background-color: #fcfbf7;
         }
 
         .badge {
@@ -355,10 +354,16 @@
             padding: 6px 14px;
             border-radius: 100px;
             font-size: 12px;
-            font-weight: 600;
-            background: #ecfdf5;
-            color: #047857;
-            border: 1px solid rgba(214, 48, 49, 0.2);
+            font-weight: 700;
+            background: rgba(214, 48, 49, 0.07);
+            color: var(--primary);
+            border: 1px solid rgba(214, 48, 49, 0.15);
+        }
+
+        .badge.summer {
+            background: rgba(124, 179, 66, 0.07);
+            color: #558b2f;
+            border: 1px solid rgba(124, 179, 66, 0.15);
         }
 
         /* Contact Section */
@@ -392,17 +397,17 @@
 
         .contact-card {
             background: var(--bg-surface);
-            padding: 24px 32px;
+            padding: 26px 32px;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(45, 26, 24, 0.05);
             transition: var(--transition);
         }
 
         .contact-card:hover {
             border-color: var(--primary);
             box-shadow: var(--shadow-md);
-            transform: translateX(4px);
+            transform: translateY(-3px);
         }
 
         .contact-card p {
@@ -411,7 +416,7 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .contact-card a {
@@ -430,12 +435,12 @@
         .meta-info {
             margin-top: 40px;
             padding-top: 24px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid rgba(45, 26, 24, 0.08);
             font-size: 14px;
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         /* Form Styling */
@@ -444,7 +449,7 @@
             padding: 44px;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(15, 23, 42, 0.02);
+            border: 1px solid rgba(45, 26, 24, 0.04);
         }
 
         .form-group {
@@ -473,11 +478,11 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--primary-glow);
+            box-shadow: 0 0 0 4px rgba(214, 48, 49, 0.15);
         }
 
         form button {
-            background: var(--dark);
+            background: var(--primary);
             color: white;
             border: none;
             padding: 16px;
@@ -487,11 +492,13 @@
             font-size: 15px;
             width: 100%;
             transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(214, 48, 49, 0.2);
         }
 
         form button:hover {
-            background: var(--primary);
-            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.2);
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(214, 48, 49, 0.35);
         }
 
         /* Footer */
@@ -599,10 +606,10 @@
                             <td>Crisp Harvest Apples, Premium Golden & Red Pears</td>
                             <td><span class="badge">Autumn / Winter</span></td>
                         </tr>
-                        <tr>
+                         <tr>
                             <td><strong>Stone Fruits</strong></td>
                             <td>Plump Peaches, Dark Velvet Plums, Sweet Mountain Cherries</td>
-                            <td><span class="badge">Summer Peak</span></td>
+                            <td><span class="badge summer">Summer Peak</span></td>
                         </tr>
                     </tbody>
                 </table>
