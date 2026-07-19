@@ -820,6 +820,66 @@
             background: var(--primary);
         }
     
+
+        .map-pin {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border: 2.5px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulse-expand 2s infinite cubic-bezier(0.25, 0, 0, 1);
+            pointer-events: none;
+        }
+
+        .pulse-ring::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2.5px solid var(--primary);
+            border-radius: 50%;
+            top: -2.5px;
+            left: -2.5px;
+            animation: pulse-expand 2s infinite cubic-bezier(0.25, 0, 0, 1);
+            animation-delay: 1s;
+        }
+
+        @keyframes pulse-expand {
+            0% {
+                transform: scale(0.7);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.9);
+                opacity: 0;
+            }
+        }
+
+        .map-pin:hover .pulse-ring,
+        .map-pin:hover .pulse-ring::after {
+            border-color: #558b2f;
+            animation-duration: 1.2s;
+        }
+        
+        .pin-punjab { top: 25.5%; left: 30.5%; }
+        .pin-ambala { top: 28.5%; left: 34%; }
+        .pin-saharanpur { top: 28.5%; left: 38.5%; }
+        .pin-delhi { top: 33.5%; left: 35%; }
+        .pin-kanpur { top: 39.5%; left: 43.5%; }
+        .pin-pune { top: 65.5%; left: 25.5%; }
+    
     </style>
 </head>
 <body>
@@ -857,6 +917,12 @@
                     <div class="map-graphic"></div>
 
                     <!-- Clean static map with pre-rendered apple indicators -->
+                    <div class="map-pin pin-punjab"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-ambala"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-saharanpur"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-delhi"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-kanpur"><div class="pulse-ring"></div></div>
+                    <div class="map-pin pin-pune"><div class="pulse-ring"></div></div>
                 </div>
             </div>
         </div>
