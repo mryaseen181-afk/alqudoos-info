@@ -906,16 +906,6 @@
                         <div class="tooltip">Pune</div>
                     </div>
                 </div>
-
-                <!-- Map Legend -->
-                <div class="map-legend">
-                    <div class="legend-item" data-pin="punjab"><span></span> Punjab Hub</div>
-                    <div class="legend-item" data-pin="ambala"><span></span> Ambala Terminal</div>
-                    <div class="legend-item" data-pin="saharanpur"><span></span> Saharanpur Desk</div>
-                    <div class="legend-item" data-pin="delhi"><span></span> Delhi Headquarters</div>
-                    <div class="legend-item" data-pin="kanpur"><span></span> Kanpur Distributor</div>
-                    <div class="legend-item" data-pin="pune"><span></span> Pune Western Port</div>
-                </div>
             </div>
         </div>
     </section>
@@ -929,46 +919,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const pins = {
-                punjab: document.querySelector('.pin-punjab'),
-                ambala: document.querySelector('.pin-ambala'),
-                saharanpur: document.querySelector('.pin-saharanpur'),
-                delhi: document.querySelector('.pin-delhi'),
-                kanpur: document.querySelector('.pin-kanpur'),
-                pune: document.querySelector('.pin-pune')
-            };
-            
-            const legendItems = document.querySelectorAll('.legend-item');
-            
-            // Map pin interaction -> highlight legend
-            Object.entries(pins).forEach(([key, pin]) => {
-                if (!pin) return;
-                
-                pin.addEventListener('mouseenter', () => {
-                    const legend = document.querySelector(`.legend-item[data-pin="${key}"]`);
-                    if (legend) legend.classList.add('active');
-                });
-                
-                pin.addEventListener('mouseleave', () => {
-                    const legend = document.querySelector(`.legend-item[data-pin="${key}"]`);
-                    if (legend) legend.classList.remove('active');
-                });
-            });
-            
-            // Legend interaction -> highlight map pins
-            legendItems.forEach(item => {
-                const targetKey = item.getAttribute('data-pin');
-                const targetPin = pins[targetKey];
-                if (!targetPin) return;
-                
-                item.addEventListener('mouseenter', () => {
-                    targetPin.classList.add('highlighted');
-                });
-                
-                item.addEventListener('mouseleave', () => {
-                    targetPin.classList.remove('highlighted');
-                });
-            });
+            // Interactive tooltips are handled natively via CSS hover states
         });
     </script>
 </body>
