@@ -613,6 +613,172 @@
         @media (max-width: 576px) {
             footer .container { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        /* Partner Map Styles */
+        .partner-map-container {
+            margin-top: 80px;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(45, 26, 24, 0.05);
+        }
+        
+        .partner-map-container h3 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .partner-map-container p.map-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+        
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            background: #faf7ed;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(45, 26, 24, 0.04);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .map-graphic {
+            width: 100%;
+            height: 100%;
+            opacity: 0.85;
+            background: radial-gradient(circle at center, #ffffff 0%, #fdfcf9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-graphic svg {
+            width: 85%;
+            height: 85%;
+            opacity: 0.9;
+        }
+        
+        .map-pin {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 0 0 rgba(214, 48, 49, 0.4);
+            animation: pulse 2s infinite;
+            transition: var(--transition);
+        }
+
+        .map-pin::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(214, 48, 49, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(214, 48, 49, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(214, 48, 49, 0);
+            }
+        }
+        
+        /* Map locations placement (India relative placement) */
+        .pin-punjab { top: 22%; left: 34%; }
+        .pin-ambala { top: 25%; left: 38%; }
+        .pin-saharanpur { top: 28%; left: 42%; }
+        .pin-delhi { top: 31%; left: 40%; }
+        .pin-kanpur { top: 40%; left: 52%; }
+        .pin-pune { top: 68%; left: 32%; }
+
+        .map-pin .tooltip {
+            visibility: hidden;
+            width: 240px;
+            background: var(--dark);
+            color: #fff;
+            text-align: left;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            position: absolute;
+            z-index: 10;
+            bottom: 135%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: var(--shadow-lg);
+            pointer-events: none;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .map-pin .tooltip strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #ff7675;
+        }
+
+        .map-pin .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark) transparent transparent transparent;
+        }
+
+        .map-pin:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .map-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(45, 26, 24, 0.08);
+            padding-top: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .legend-item span {
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
@@ -692,6 +858,69 @@
                     </form>
                 </div>
 
+            </div>
+
+            <!-- Interactive Partner Map Section -->
+            <div class="partner-map-container">
+                <h3>Partner Network</h3>
+                <p class="map-desc">Hover over the hot-spots to explore our direct wholesale distribution and cold-storage partner centers across India.</p>
+                
+                <div class="map-wrapper">
+                    <div class="map-graphic">
+                        <!-- Stylized SVG Map Outline of India -->
+                        <svg viewBox="0 0 800 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M280,120 L300,100 L320,105 L340,90 L360,110 L380,100 L400,120 L420,150 L440,160 L450,180 L430,220 L470,240 L500,220 L540,250 L570,260 L600,280 L620,320 L610,350 L590,360 L570,390 L610,410 L640,430 L660,460 L650,490 L610,500 L590,520 L580,550 L600,580 L590,620 L550,610 L520,630 L490,620 L470,640 L450,670 L430,700 L400,720 L380,750 L370,780 L360,820 L350,850 L340,820 L330,780 L320,740 L310,700 L290,670 L280,630 L250,620 L220,600 L190,580 L180,550 L200,520 L210,480 L190,450 L170,420 L160,380 L150,340 L180,320 L200,290 L220,270 L230,240 L210,210 L230,180 L250,160 L270,140 Z" fill="#fdfbf7" stroke="#e3dbcf" stroke-width="3" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- Location Pins -->
+                    <div class="map-pin pin-punjab">
+                        <div class="tooltip">
+                            <strong>Punjab Partner</strong>
+                            Cold-storage and direct farm procurement center for apples and stone fruits.
+                        </div>
+                    </div>
+                    <div class="map-pin pin-ambala">
+                        <div class="tooltip">
+                            <strong>Ambala Partner</strong>
+                            Northern India logistical sorting and quality check hub.
+                        </div>
+                    </div>
+                    <div class="map-pin pin-saharanpur">
+                        <div class="tooltip">
+                            <strong>Saharanpur (UP) Partner</strong>
+                            Primary mango and pome orchard management division.
+                        </div>
+                    </div>
+                    <div class="map-pin pin-delhi">
+                        <div class="tooltip">
+                            <strong>Delhi Partner</strong>
+                            Central Wholesale distribution desk & corporate logistics office.
+                        </div>
+                    </div>
+                    <div class="map-pin pin-kanpur">
+                        <div class="tooltip">
+                            <strong>Kanpur Partner</strong>
+                            Regional cold storage network & UP state sales coordinator.
+                        </div>
+                    </div>
+                    <div class="map-pin pin-pune">
+                        <div class="tooltip">
+                            <strong>Pune Partner</strong>
+                            Western India wholesale terminal routing to global ports.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Legend -->
+                <div class="map-legend">
+                    <div class="legend-item"><span></span> Punjab Hub</div>
+                    <div class="legend-item"><span></span> Ambala Terminal</div>
+                    <div class="legend-item"><span></span> Saharanpur Desk</div>
+                    <div class="legend-item"><span></span> Delhi Headquarters</div>
+                    <div class="legend-item"><span></span> Kanpur Distributor</div>
+                    <div class="legend-item"><span></span> Pune Western Port</div>
+                </div>
             </div>
         </div>
     </section>
