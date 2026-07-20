@@ -788,6 +788,207 @@
         @media (max-width: 576px) {
             footer .container { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        /* Unique Interactive Dashboard Styles */
+        .interactive-dashboard-container {
+            margin-top: 60px;
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 44px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(45, 26, 24, 0.05);
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .dashboard-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            background: #f1ece4;
+            color: var(--text-main);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(214, 48, 49, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Brix Index layout */
+        .brix-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .brix-layout { grid-template-columns: 1fr; gap: 30px; }
+            .interactive-dashboard-container { padding: 24px 16px; }
+        }
+
+        .brix-control {
+            background: #fdfbf7;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(45, 26, 24, 0.04);
+        }
+
+        .brix-control h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .slider-wrapper {
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .brix-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2d8cd;
+            outline: none;
+            transition: background 450ms ease-in;
+        }
+
+        .brix-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(214, 48, 49, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .brix-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .brix-results {
+            background: #fdfbf7;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(214, 48, 49, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            border-bottom: 1px dashed rgba(45, 26, 24, 0.08);
+            padding-bottom: 10px;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .result-row strong {
+            color: var(--dark);
+        }
+
+        .result-row span {
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Harvest Calendar layout */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .crop-calendar-card {
+            background: #fdfbf7;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(45, 26, 24, 0.04);
+        }
+
+        .crop-calendar-card h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .crop-calendar-card h4 span {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .calendar-timeline {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .availability-bar {
+            height: 6px;
+            background: #e2d8cd;
+            border-radius: 3px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .availability-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+    
     </style>
 </head>
 <body>
@@ -869,6 +1070,81 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Interactive Analytics Dashboard -->
+            <div class="interactive-dashboard-container">
+                <div class="dashboard-header">
+                    <h3 style="font-size: 26px; font-weight: 800; color: var(--dark); letter-spacing: -0.5px;">Harvest & Quality <span>Dashboard</span></h3>
+                    <p style="font-size: 15px; color: var(--text-muted); margin-top: 6px;">Interactive tools for wholesale procurement scheduling.</p>
+                </div>
+
+                <div class="dashboard-tabs">
+                    <button class="tab-btn active" onclick="switchTab('harvest')">Harvest Calendar</button>
+                    <button class="tab-btn" onclick="switchTab('brix')">Sweetness Brix Index</button>
+                </div>
+
+                <!-- Tab 1: Harvest Calendar -->
+                <div id="tab-harvest" class="tab-content active">
+                    <div class="calendar-grid">
+                        <div class="crop-calendar-card">
+                            <h4><span></span> Crisp Apples</h4>
+                            <div class="calendar-timeline">Peak: September – March (Cold Storage Available)</div>
+                            <div class="availability-bar"><div class="availability-fill" style="width: 75%; margin-left: 25%;"></div></div>
+                        </div>
+                        <div class="crop-calendar-card">
+                            <h4><span></span> Premium Pears</h4>
+                            <div class="calendar-timeline">Peak: October – February (Standard transit)</div>
+                            <div class="availability-bar"><div class="availability-fill" style="width: 50%; margin-left: 40%;"></div></div>
+                        </div>
+                        <div class="crop-calendar-card">
+                            <h4><span></span> Sweet Cherries</h4>
+                            <div class="calendar-timeline">Peak: June – July (Rapid cold-chain)</div>
+                            <div class="availability-bar"><div class="availability-fill" style="width: 16%; margin-left: 45%;"></div></div>
+                        </div>
+                        <div class="crop-calendar-card">
+                            <h4><span></span> Plums & Peaches</h4>
+                            <div class="calendar-timeline">Peak: July – August (Air-freight optimized)</div>
+                            <div class="availability-bar"><div class="availability-fill" style="width: 16%; margin-left: 55%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Brix index -->
+                <div id="tab-brix" class="tab-content">
+                    <div class="brix-layout">
+                        <div class="brix-control">
+                            <h4>Adjust Harvest Brix (Sugar Content)</h4>
+                            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Use the slider to evaluate shelf-life properties, flavor profiles, and transit recommendations based on the sugar concentration (% Brix) of crop yields.</p>
+                            <div class="slider-wrapper">
+                                <input type="range" min="10" max="18" value="14" class="brix-slider" id="brix-slider-range" oninput="updateBrix(this.value)">
+                                <div class="slider-labels">
+                                    <span>10% (Early Cut)</span>
+                                    <span>14% (Standard)</span>
+                                    <span>18% (Peak Sweet)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="brix-results">
+                            <div class="result-row">
+                                <strong>Sweetness Level:</strong>
+                                <span id="brix-val">14% Brix</span>
+                            </div>
+                            <div class="result-row">
+                                <strong>Flavor Profile:</strong>
+                                <span id="brix-flavor" style="color: var(--primary);">Rich & Balanced</span>
+                            </div>
+                            <div class="result-row">
+                                <strong>Estimated Storage Life:</strong>
+                                <span id="brix-life">4 – 6 Months</span>
+                            </div>
+                            <div class="result-row">
+                                <strong>Logistics Priority:</strong>
+                                <span id="brix-priority">Standard cold storage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -878,5 +1154,48 @@
             <p style="font-weight: 700; color: var(--primary);">Purity & Integrity in Every Framework.</p>
         </div>
     </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // Remove active state from all buttons and contents
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Activate the correct elements
+            if (tabName === 'harvest') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('tab-harvest').classList.add('active');
+            } else {
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('tab-brix').classList.add('active');
+            }
+        }
+
+        function updateBrix(val) {
+            document.getElementById('brix-val').innerText = val + '% Brix';
+            
+            const flavor = document.getElementById('brix-flavor');
+            const life = document.getElementById('brix-life');
+            const priority = document.getElementById('brix-priority');
+            
+            const num = parseInt(val);
+            if (num <= 12) {
+                flavor.innerText = 'Crisply Tart';
+                flavor.style.color = '#558b2f';
+                life.innerText = '6 – 8 Months';
+                priority.innerText = 'Ideal for long-transit sea freight';
+            } else if (num > 12 && num <= 15) {
+                flavor.innerText = 'Rich & Balanced';
+                flavor.style.color = 'var(--primary)';
+                life.innerText = '4 – 6 Months';
+                priority.innerText = 'Standard cold storage / Wholesale';
+            } else {
+                flavor.innerText = 'Maximum Sweetness (Gourmet)';
+                flavor.style.color = '#ff7675';
+                life.innerText = '2 – 3 Months';
+                priority.innerText = 'Rapid delivery / Local markets';
+            }
+        }
+    </script>
 </body>
 </html>
