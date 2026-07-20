@@ -788,6 +788,13 @@
         @media (max-width: 576px) {
             footer .container { flex-direction: column; gap: 16px; text-align: center; }
         }
+
+        .trust-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(214, 48, 49, 0.2) !important;
+        }
+    
     </style>
 </head>
 <body>
@@ -832,25 +839,46 @@
                 </p>
             </div>
 
-            <div style="background: var(--bg-surface); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 1px solid rgba(45, 26, 24, 0.05); margin-bottom: 40px;">
-                <h3 style="font-size: 22px; color: var(--dark); margin-bottom: 16px; font-weight: 800;">Why Trust Us</h3>
-                <p style="font-size: 16px; color: var(--text-main); line-height: 1.8; margin-bottom: 24px;">
-                    Trust in agricultural wholesale is built on consistency, compliance, and transparency. At Al-Qudoos Fruits, we offer absolute peace of mind through:
-                </p>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; padding-left: 0;">
-                    <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text-main);">
-                        <span style="color: var(--primary); font-weight: 800; font-size: 18px;">✓</span>
-                        <div><strong>Certified Quality Assurance:</strong> Every harvest undergoes multi-phase quality inspections checking skin finish, sugar-brix content, and firmness parameters.</div>
-                    </li>
-                    <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text-main);">
-                        <span style="color: var(--primary); font-weight: 800; font-size: 18px;">✓</span>
-                        <div><strong>Guaranteed Cold Chain:</strong> We ensure 100% temperature-controlled logistics from farm gate to distributor, completely preserving fruit freshness and nutrition.</div>
-                    </li>
-                    <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--text-main);">
-                        <span style="color: var(--primary); font-weight: 800; font-size: 18px;">✓</span>
-                        <div><strong>Fair-Trade Partnerships:</strong> Direct orchard contracts secure fair pricing for growers and complete cost transparency for our commercial buyers.</div>
-                    </li>
-                </ul>
+            <div style="margin-bottom: 50px; margin-top: 40px;">
+                <h3 style="font-size: 28px; color: var(--dark); margin-bottom: 30px; font-weight: 800; text-align: center; letter-spacing: -0.5px;">Why Trust <span>Us</span></h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 20px;">
+                    <!-- Quality Card -->
+                    <div style="background: var(--bg-surface); padding: 36px 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid rgba(45, 26, 24, 0.06); transition: var(--transition); position: relative; overflow: hidden;" class="trust-card">
+                        <div style="background: rgba(214, 48, 49, 0.08); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; color: var(--primary);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="m9 11 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.2px;">Certified Quality</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.65;">Multi-phase quality checks inspect skin finish, sugar-brix content, and firmness parameters for consistent premium yields.</p>
+                    </div>
+
+                    <!-- Cold Chain Card -->
+                    <div style="background: var(--bg-surface); padding: 36px 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid rgba(45, 26, 24, 0.06); transition: var(--transition); position: relative; overflow: hidden;" class="trust-card">
+                        <div style="background: rgba(214, 48, 49, 0.08); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; color: var(--primary);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+                            </svg>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.2px;">Guaranteed Cold Chain</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.65;">Continuous temperature-monitored logistical loops maintain organic properties and crispness from harvest gate to distribution.</p>
+                    </div>
+
+                    <!-- Fair Trade Card -->
+                    <div style="background: var(--bg-surface); padding: 36px 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid rgba(45, 26, 24, 0.06); transition: var(--transition); position: relative; overflow: hidden;" class="trust-card">
+                        <div style="background: rgba(214, 48, 49, 0.08); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; color: var(--primary);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="m16 11 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h4 style="font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.2px;">Direct Partnerships</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.65;">Direct orchard contracts eliminate intermediate broker costs, securing fair pricing for growers and transparency for buyers.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="features-grid">
